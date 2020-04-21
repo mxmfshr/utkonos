@@ -12,7 +12,7 @@ default_args = {
     'email': ['mxmfshr@gmail.com'],
     'email_on_failure': False,
     'email_on_retry': False,
-    'start_date': datetime(2018, 1, 31),
+    'start_date': datetime(2018, 1, 30),
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
     # 'queue': 'bash_queue',
@@ -35,7 +35,7 @@ dag = DAG(
     'monthly',
     default_args=default_args,
     description='Monthly DAG',
-    schedule_interval=timedelta(days=30),
+    schedule_interval=timedelta('@monthly'),
     user_defined_macros=default_args
 )
 
