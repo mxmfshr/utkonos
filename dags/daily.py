@@ -32,34 +32,34 @@ default_args = {
 }
 
 dag = DAG(
-    'pipeline',
+    'daily',
     default_args=default_args,
-    description='A simple tutorial DAG',
+    description='Daily DAG',
     schedule_interval=timedelta(days=1),
     user_defined_macros=default_args
 )
 
 t1 = BashOperator(
     task_id='load_data',
-    bash_command='papermill {{ airflow_home }}/scripts/get_data.ipynb - -p date {{ ds }} > /dev/null',
+    bash_command='papermill {{ airflow_home }}/scripts/get_data.ipynb - -p date {{ ds }} -p period daily > /dev/null',
     dag=dag,
 )
 
 t2 = BashOperator(
-    task_id='daily_report_notebook',
-    bash_command='papermill {{ airflow_home }}/scripts/eda.ipynb {{ airflow_home }}/reports/notebooks/report_{{ ds }}.ipynb -p data_path {{ airflow_home }}/data/output_{{ ds }}.csv',
+    task_id='report_notebook',
+    bash_command='papermill {{ airflow_home }}/scripts/eda.ipynb {{ airflow_home }}/reports/daily/notebooks/report_{{ ds }}.ipynb -p data_path {{ airflow_home }}/data/daily/output_{{ ds }}.csv',
     dag=dag,
 )
 
 t3 = BashOperator(
-    task_id='daily_report_html',
-    bash_command='jupyter nbconvert {{ airflow_home }}/reports/notebooks/report_{{ ds }}.ipynb --output {{ airflow_home }}/reports/html/report_{{ ds }} --to html --no-input',
+    task_id='report_html',
+    bash_command='jupyter nbconvert {{ airflow_home }}/reports/daily/notebooks/report_{{ ds }}.ipynb --output {{ airflow_home }}/reports/daily/html/report_{{ ds }} --to html --no-input',
     dag=dag,
 )
 
 t4 = BashOperator(
-    task_id='daily_report_profiling',
-    bash_command='pandas_profiling {{ airflow_home }}/data/output_{{ ds }}.csv {{ airflow_home }}/reports/html/profiling_{{ ds }}.html',
+    task_id='report_profiling',
+    bash_command='pandas_profiling {{ airflow_home }}/data/daily/output_{{ ds }}.csv {{ airflow_home }}/reports/daily/html/profiling_{{ ds }}.html',
     dag=dag,
 )
 t1 >> t2 >> [t3, t4]
