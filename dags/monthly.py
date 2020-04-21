@@ -63,8 +63,15 @@ t4 = BashOperator(
     dag=dag,
 )
 
+t5 = BashOperator(
+    task_id='fit_model',
+    bash_command='papermill {{ airflow_home }}/scripts/model.ipynb - > /dev/null',
+    dag=dag,
+)
 
 t1.set_downstream(t2)
 t1.set_downstream(t4)
 
 t2.set_downstream(t3)
+
+t4.set_downstream(t5)
