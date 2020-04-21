@@ -35,7 +35,7 @@ dag = DAG(
     'monthly',
     default_args=default_args,
     description='Monthly DAG',
-    schedule_interval=timedelta('@monthly'),
+    schedule_interval='@monthly',
     user_defined_macros=default_args
 )
 

@@ -35,7 +35,7 @@ dag = DAG(
     'weekly',
     default_args=default_args,
     description='Weekly DAG',
-    schedule_interval=timedelta('@weekly'),
+    schedule_interval='@weekly',
     user_defined_macros=default_args
 )
 
