@@ -12,7 +12,7 @@ default_args = {
     'email': ['mxmfshr@gmail.com'],
     'email_on_failure': False,
     'email_on_retry': False,
-    'start_date': datetime(2018, 1, 30),
+    'start_date': datetime(2018, 2, 1),
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
     # 'queue': 'bash_queue',
@@ -58,7 +58,7 @@ t3 = BashOperator(
 )
 
 t4 = BashOperator(
-    task_id='preprocessing',
+    task_id='preprocess',
     bash_command='papermill {{ airflow_home }}/scripts/preprocessing.ipynb - -p date {{ ds }} > /dev/null',
     dag=dag,
 )

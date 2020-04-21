@@ -12,7 +12,7 @@ default_args = {
     'email': ['mxmfshr@gmail.com'],
     'email_on_failure': False,
     'email_on_retry': False,
-    'start_date': datetime(2018, 1, 7),
+    'start_date': datetime(2018, 1, 8),
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
     # 'queue': 'bash_queue',
