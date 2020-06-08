@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net" modified="2020-06-08T09:59:39.269Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15" etag="xDCgIEdmFg1RHsue13gE" version="13.1.14" type="github">
+  <diagram id="6PyBOEWYDgGJURSMTD9J" name="Page-1">
+    <mxGraphModel dx="554" dy="516" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="J44k9NdbHps_V6Bt3nKp-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="J44k9NdbHps_V6Bt3nKp-2" target="J44k9NdbHps_V6Bt3nKp-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="J44k9NdbHps_V6Bt3nKp-2" value="База&lt;br&gt;данных" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;spacingTop=0;spacingBottom=8;" parent="1" vertex="1">
+          <mxGeometry x="120" y="360" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9cpO5d10IuphYM7hYX6Q-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="J44k9NdbHps_V6Bt3nKp-4" target="9cpO5d10IuphYM7hYX6Q-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="J44k9NdbHps_V6Bt3nKp-4" value="get_data&lt;br&gt;Notebook" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=15;" parent="1" vertex="1">
+          <mxGeometry x="400" y="360" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9cpO5d10IuphYM7hYX6Q-1" value="Параметры start_date и end_date" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="364" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="9cpO5d10IuphYM7hYX6Q-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="9cpO5d10IuphYM7hYX6Q-2" target="9cpO5d10IuphYM7hYX6Q-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9cpO5d10IuphYM7hYX6Q-2" value="data/raw/" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="400" y="520" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9cpO5d10IuphYM7hYX6Q-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9cpO5d10IuphYM7hYX6Q-5" target="9cpO5d10IuphYM7hYX6Q-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9cpO5d10IuphYM7hYX6Q-5" value="preprocess&lt;br&gt;Notebook" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=20;" vertex="1" parent="1">
+          <mxGeometry x="560" y="360" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9cpO5d10IuphYM7hYX6Q-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="9cpO5d10IuphYM7hYX6Q-7" target="9cpO5d10IuphYM7hYX6Q-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9cpO5d10IuphYM7hYX6Q-7" value="data/&lt;br&gt;preprocessed/" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="560" y="520" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9cpO5d10IuphYM7hYX6Q-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="9cpO5d10IuphYM7hYX6Q-9" target="9cpO5d10IuphYM7hYX6Q-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9cpO5d10IuphYM7hYX6Q-9" value="EDA&lt;br&gt;Notebook" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=19;" vertex="1" parent="1">
+          <mxGeometry x="720" y="360" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9cpO5d10IuphYM7hYX6Q-11" value="отчеты&lt;br&gt;по&lt;br&gt;данным" style="shape=internalStorage;whiteSpace=wrap;html=1;backgroundOutline=1;spacingLeft=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="880" y="360" width="80" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
