@@ -47,7 +47,7 @@ t1 = BashOperator(
 
 t2 = BashOperator(
     task_id='report_notebook',
-    bash_command='papermill {{ airflow_home }}/scripts/eda.ipynb {{ airflow_home }}/reports/monthly/notebooks/report_{{ ds }}.ipynb -p data_path {{ airflow_home }}/data/monthly/output_{{ ds }}.csv',
+    bash_command='papermill {{ airflow_home }}/scripts/eda.ipynb {{ airflow_home }}/reports/monthly/notebooks/report_{{ ds }}.ipynb -p data_path {{ airflow_home }}/data/raw/monthly/output_{{ ds }}.csv',
     dag=dag,
 )
 
@@ -59,13 +59,13 @@ t3 = BashOperator(
 
 t4 = BashOperator(
     task_id='preprocess',
-    bash_command='papermill {{ airflow_home }}/scripts/preprocessing.ipynb - -p date {{ ds }} > /dev/null',
+    bash_command='papermill {{ airflow_home }}/scripts/preprocessing.ipynb - -p date {{ ds }} -p period monthly > /dev/null',
     dag=dag,
 )
 
 t5 = BashOperator(
     task_id='fit_model',
-    bash_command='papermill {{ airflow_home }}/scripts/model.ipynb - > /dev/null',
+    bash_command='papermill {{ airflow_home }}/model/model.ipynb - -p date {{ ds }} -p period monthly > /dev/null',
     dag=dag,
 )
 

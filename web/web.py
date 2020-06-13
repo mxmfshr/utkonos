@@ -3,13 +3,15 @@ import pandas as pd
 import os
 import glob
 import lightgbm as lgb
+import datetime
 from sklearn.metrics import roc_auc_score
 
 airflow_home = os.environ['AIRFLOW_HOME']
 
 @st.cache
 def load_data():
-    return pd.read_csv(f'{airflow_home}/data/preprocessed/preprocessed_full.csv')
+    data = pd.read_csv(f'{airflow_home}/data/preprocessed/preprocessed_full.csv')
+    return data
     
 @st.cache
 def get_dataset(df):
@@ -37,10 +39,6 @@ def get_dataset(df):
 
 
 df = load_data()
-
-#dates = df['OrderDate'].unique()
-#selected_dates = st.date_input('Time period:', min_value=dates[0], max_value=dates[-1])
-#st.write(selected_dates)
 
 st.write('Sample of current data:')
 st.dataframe(df.sample(10))

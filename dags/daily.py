@@ -46,21 +46,40 @@ t1 = BashOperator(
 )
 
 t2 = BashOperator(
-    task_id='report_notebook',
-    bash_command='papermill {{ airflow_home }}/scripts/eda.ipynb {{ airflow_home }}/reports/daily/notebooks/report_{{ ds }}.ipynb -p data_path {{ airflow_home }}/data/daily/output_{{ ds }}.csv',
+    task_id='preprocess',
+    bash_command='papermill {{ airflow_home }}/scripts/preprocessing.ipynb - -p date {{ ds }} -p period daily > /dev/null',
     dag=dag,
 )
 
 t3 = BashOperator(
+    task_id='report_notebook',
+    bash_command='papermill {{ airflow_home }}/scripts/eda.ipynb {{ airflow_home }}/reports/daily/notebooks/report_{{ ds }}.ipynb -p data_path {{ airflow_home }}/data/raw/daily/output_{{ ds }}.csv',
+    dag=dag,
+)
+
+t4 = BashOperator(
     task_id='report_html',
     bash_command='jupyter nbconvert {{ airflow_home }}/reports/daily/notebooks/report_{{ ds }}.ipynb --output {{ airflow_home }}/reports/daily/html/report_{{ ds }} --to html --no-input',
     dag=dag,
 )
 
-t4 = BashOperator(
+t5 = BashOperator(
     task_id='report_profiling',
-    bash_command='pandas_profiling {{ airflow_home }}/data/daily/output_{{ ds }}.csv {{ airflow_home }}/reports/daily/html/profiling_{{ ds }}.html',
+    bash_command='pandas_profiling {{ airflow_home }}/data/raw/daily/output_{{ ds }}.csv {{ airflow_home }}/reports/daily/html/profiling_{{ ds }}.html > /dev/null',
     dag=dag,
 )
-t1 >> t2 >> [t3, t4]
+
+t6 = BashOperator(
+    task_id='fit_model',
+    bash_command='papermill {{ airflow_home }}/scripts/model.ipynb - -p date {{ ds }} -p period daily > /dev/null',
+    dag=dag,
+)
+
+t1.set_downstream(t2)
+t1.set_downstream(t3)
+
+t3.set_downstream(t4)
+t4.set_downstream(t5)
+
+t2.set_downstream(t6)
 

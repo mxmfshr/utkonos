@@ -47,7 +47,7 @@ t1 = BashOperator(
 
 t2 = BashOperator(
     task_id='report_notebook',
-    bash_command='papermill {{ airflow_home }}/scripts/eda.ipynb {{ airflow_home }}/reports/weekly/notebooks/report_{{ ds }}.ipynb -p data_path {{ airflow_home }}/data/weekly/output_{{ ds }}.csv',
+    bash_command='papermill {{ airflow_home }}/scripts/eda.ipynb {{ airflow_home }}/reports/weekly/notebooks/report_{{ ds }}.ipynb -p data_path {{ airflow_home }}/data/raw/weekly/output_{{ ds }}.csv',
     dag=dag,
 )
 
@@ -59,8 +59,9 @@ t3 = BashOperator(
 
 t4 = BashOperator(
     task_id='report_profiling',
-    bash_command='pandas_profiling {{ airflow_home }}/data/weekly/output_{{ ds }}.csv {{ airflow_home }}/reports/weekly/html/profiling_{{ ds }}.html',
+    bash_command='pandas_profiling {{ airflow_home }}/data/raw/weekly/output_{{ ds }}.csv {{ airflow_home }}/reports/weekly/html/profiling_{{ ds }}.html',
     dag=dag,
 )
+
 t1 >> t2 >> [t3, t4]
 
